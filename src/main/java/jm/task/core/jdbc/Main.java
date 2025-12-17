@@ -4,6 +4,7 @@ import jm.task.core.jdbc.dao.UserDao;
 import jm.task.core.jdbc.dao.UserDaoJDBCImpl;
 import jm.task.core.jdbc.service.UserService;
 import jm.task.core.jdbc.service.UserServiceImpl;
+import jm.task.core.jdbc.util.Util;
 
 import java.sql.SQLOutput;
 
@@ -12,6 +13,7 @@ public class Main {
         // реализуйте алгоритм здесь
         UserService userService = new UserServiceImpl();
 
+        userService.dropUsersTable();
         userService.createUsersTable();
 
         userService.saveUser("John", "Doe", (byte) 33);
@@ -24,6 +26,8 @@ public class Main {
         userService.cleanUsersTable();
 
         userService.dropUsersTable();
+
+        Util.shutdown();
 
     }
 }

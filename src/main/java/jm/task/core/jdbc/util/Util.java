@@ -57,4 +57,10 @@ public class Util {
         }
         return sessionFactory;
     }
+
+    public static void shutdown() {
+        if (sessionFactory != null) {
+            sessionFactory.close();
+        }
+    }
 }
